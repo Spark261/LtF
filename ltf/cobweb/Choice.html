@@ -1,0 +1,53 @@
+{{ block content }}
+    <h2>Round {{ player.round_number }}</h2>
+    
+    {% if graph %}
+        
+        <img src="data:image/png;base64,{{ graph }}" alt="Graph">
+    {% endif %}
+    
+    <p> This chart shows your prediction and the market price in each round. </p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="padding: 10px;">Round</th>
+                <th style="padding: 10px;">Your prediction</th>
+                <th style="padding: 10px;">Actual Price</th>
+                <th style="padding: 10px;">Points earned this round</th>
+                             
+            </tr>
+        </thead>
+        <tbody>
+            {% for prev_round in player.in_previous_rounds %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">{{ prev_round.round_number }}</td>
+                    <td style="padding: 10px;">{{ prev_round.exp }}</td>
+                    <td style="padding: 10px;">{{ prev_round.group.market_price }}</td>
+                    <td style="padding: 10px;">{{ prev_round.payoffs}} points</td>
+                                      
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+    
+   <p> This is round {{player.round_number}} of 50.</p>  
+
+    <style>
+    .centered-sentence {
+        text-align: center;
+        margin-top: 20px; /* Adjust this value to control the vertical spacing */
+    }
+    
+    .centered-text {
+        text-align: center;
+    }
+</style>
+
+
+    {{ formfields}}
+    {{ next_button }}
+
+{{ endblock }}

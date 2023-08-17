@@ -1,0 +1,10 @@
+{{ block content }}
+<h2>Round {{ player.round_number }} Results</h2> 
+    <p>Chosen number = {{ player.exp }}</p>
+    <p>Market Price = {{ group.market_price }}</p>
+    <p>Payoff = {{ player.payoffs }}</p>
+    {{ next_button }}
+{{ endblock }}
+
+
+
